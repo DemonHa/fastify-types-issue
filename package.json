@@ -15,6 +15,7 @@
   "author": "",
   "license": "UNLICENSED",
   "dependencies": {
+    "@fastify/autoload": "^5.8.0",
     "@sinclair/typebox": "^0.31.20",
     "fastify": "^4.24.3",
     "fastify-raw-body": "^4.2.2",

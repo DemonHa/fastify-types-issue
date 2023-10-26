@@ -1,9 +1,18 @@
 {
   "typescript.tsdk": "node_modules/typescript/lib",
-  "prettier.configPath": ".prettierrc",
   "eslint.enable": true,
-  "editor.formatOnSave": true,
+  "search.exclude": {
+    "**/.git": true,
+    "**/.vscode": true,
+    "**/.github": true,
+    "**/node_modules": true,
+    "**/build": true,
+    "yarn.lock": true,
+    "package.json": true
+  },
+  "prettier.configPath": ".prettierrc",
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
+  "editor.formatOnSave": true
 }
