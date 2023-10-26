@@ -1,4 +1,4 @@
-import { FastifyRequest, preHandlerAsyncHookHandler } from "fastify";
+import { FastifyRequest, preHandlerAsyncHookHandler, } from "fastify";
 import fastifyPlugin from "fastify-plugin";
 import { Unauthorized } from "http-errors";
 
