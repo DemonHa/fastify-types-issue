@@ -1,31 +1,26 @@
-import { FastifyPluginAsync } from "fastify";
+import { FastifyPluginAsync } from 'fastify';
 
-import { handlerGet, handlerPut, otherValidationMethod } from "./handler";
-import * as Schemas from "./schemas";
+import { handlerGet, handlerPut, otherValidationMethod } from './handler';
+import * as Schemas from './schemas';
 
 const randomModule: FastifyPluginAsync = async fastifyInstance => {
   // Declare a route
-  fastifyInstance.put(
-    "/",
-    {
-      preHandler: [
-        fastifyInstance.guard.permissionCheck("unauthorized"),
-        otherValidationMethod,
-      ],
-      schema: Schemas.put,
-    },
-    handlerPut,
-  );
+  fastifyInstance.route({
+    url: '/',
+    method: 'PUT',
+    handler: handlerPut,
+    schema: Schemas.put,
+    preHandler: [fastifyInstance.guard.permissionCheck('unauthorized'), otherValidationMethod],
+  });
 
-  fastifyInstance.get(
-    "/",
-    {
-      preHandler: fastifyInstance.guard.permissionCheck("authorized"),
-      schema: Schemas.get,
-    },
-    handlerGet,
-  );
+  fastifyInstance.route({
+    url: '/',
+    method: 'GET',
+    handler: handlerGet,
+    schema: Schemas.get,
+    preHandler: fastifyInstance.guard.permissionCheck('unauthorized'),
+  });
 };
 
 export default randomModule;
-export const autoPrefix = "/random-module";
+export const autoPrefix = '/random-module';
